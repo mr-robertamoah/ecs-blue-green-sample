@@ -1,9 +1,9 @@
 {
-  "family": "ecs-sample-app",
+  "family": "simple-blue-green-td",
   "networkMode": "awsvpc",
   "containerDefinitions": [
     {
-      "name": "sample-app",
+      "name": "simple-blue-green",
       "image": "IMAGE_NAME_PLACEHOLDER",
       "essential": true,
       "portMappings": [
@@ -15,7 +15,7 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/sample-app",
+          "awslogs-group": "/ecs/simple-blue-green",
           "awslogs-region": "us-east-1",
           "awslogs-stream-prefix": "ecs"
         }
