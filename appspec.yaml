@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "<TASK_DEFINITION>"
+        TaskDefinition: "simple-blue-green-td"
         LoadBalancerInfo:
-          ContainerName: "sample-app"
+          ContainerName: "simple-blue-green"
           ContainerPort: 80
