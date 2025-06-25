@@ -15,8 +15,8 @@
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/simple-blue-green",
-          "awslogs-region": "us-east-1",
+          "awslogs-group": "/ecs/simple-blue-green-td",
+          "awslogs-region": "eu-north-1",
           "awslogs-stream-prefix": "ecs"
         }
       }
