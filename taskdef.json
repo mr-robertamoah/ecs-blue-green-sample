@@ -1,28 +1,43 @@
 {
-  "family": "simple-blue-green-td",
-  "networkMode": "awsvpc",
-  "containerDefinitions": [
-    {
-      "name": "simple-blue-green",
-      "image": "IMAGE_NAME_PLACEHOLDER",
-      "essential": true,
-      "portMappings": [
+    "family": "simple-blue-green-td",
+    "containerDefinitions": [
         {
-          "containerPort": 80,
-          "hostPort": 80
+            "name": "simple-blue-green-container",
+            "image": "IMAGE_NAME_PLACEHOLDER",
+            "cpu": 256,
+            "memory": 512,
+            "portMappings": [
+                {
+                    "name": "simple-blue-green-container-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/simple-blue-green-td",
+                    "mode": "non-blocking",
+                    "awslogs-create-group": "true",
+                    "max-buffer-size": "25m",
+                    "awslogs-region": "eu-north-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            }
         }
-      ],
-      "logConfiguration": {
-        "logDriver": "awslogs",
-        "options": {
-          "awslogs-group": "/ecs/simple-blue-green-td",
-          "awslogs-region": "eu-north-1",
-          "awslogs-stream-prefix": "ecs"
-        }
-      }
-    }
-  ],
-  "requiresCompatibilities": ["FARGATE"],
-  "cpu": "256",
-  "memory": "512"
+    ],
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "256",
+    "memory": "512",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "enableFaultInjection": false
 }
